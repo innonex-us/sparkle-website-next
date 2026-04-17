@@ -1,0 +1,11 @@
+export { HeroSection } from "./hero-section";
+export { SparkleTaglineSection } from "./sparkle-tagline-section";
+export { WhatWeDoSection } from "./what-we-do-section";
+export { WhyUsSection } from "./why-us-section";
+export { EventsSection } from "./events-section";
+export { EventVideosSection } from "./event-videos-section";
+export { CommitmentsSection } from "./commitments-section";
+export { AnnouncementSection } from "./announcement-section";
+export { HonorableClientsSection } from "./honorable-clients-section";
+export { ProgramVideosSection } from "./program-videos-section";
+export { ContactSection } from "./contact-section";
