@@ -1,7 +1,24 @@
+import { timingSafeEqual } from "crypto";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { setAdminSession } from "@/lib/admin-auth";
-import { getAdminCredentials, ensureAdminExists } from "@/lib/admin-db";
+import {
+  getAdminCredentials,
+  ensureAdminExists,
+  setAdminPassword,
+} from "@/lib/admin-db";
+
+/** Constant-time compare so login timing does not leak password length hints vs env. */
+function timingSafeStringEqual(a: string, b: string): boolean {
+  try {
+    const bufA = Buffer.from(a, "utf8");
+    const bufB = Buffer.from(b, "utf8");
+    if (bufA.length !== bufB.length) return false;
+    return timingSafeEqual(bufA, bufB);
+  } catch {
+    return false;
+  }
+}
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
@@ -25,7 +42,17 @@ export async function POST(request: Request) {
       );
     }
 
-    const match = await bcrypt.compare(password, admin.passwordHash);
+    let match = await bcrypt.compare(password, admin.passwordHash);
+    if (!match) {
+      const envPassword = process.env.ADMIN_PASSWORD;
+      if (
+        envPassword &&
+        timingSafeStringEqual(password, envPassword)
+      ) {
+        await setAdminPassword(await bcrypt.hash(password, 10));
+        match = true;
+      }
+    }
     if (!match) {
       return NextResponse.json({ error: "Invalid password" }, { status: 401 });
     }
