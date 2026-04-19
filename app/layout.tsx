@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Syne, Outfit } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
-import { SiteChrome } from "@/components/site-chrome";
+import { SiteHeader } from "@/components/site-header";
+import { PremiumFeatures } from "@/components/premium-features";
+import { ExperienceAssistant } from "@/components/experience-assistant";
 
 const fontHeading = Syne({
   variable: "--font-heading",
@@ -22,11 +25,14 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.png" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  const showPublicChrome = !pathname.startsWith("/admin");
+
   return (
     <html lang="en">
       <head>
@@ -36,7 +42,13 @@ export default function RootLayout({
       <body
         className={`${fontHeading.variable} ${fontBody.variable} font-sans antialiased`}
       >
-        <SiteChrome />
+        {showPublicChrome ? (
+          <>
+            <PremiumFeatures />
+            <ExperienceAssistant />
+            <SiteHeader />
+          </>
+        ) : null}
         {children}
       </body>
     </html>
