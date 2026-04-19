@@ -1,6 +1,19 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { NextConfig } from "next";
 
+/** Directory containing this config file — stable app root even when cwd / lockfile detection differ. */
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+
 const nextConfig: NextConfig = {
+  // Prefer this app folder when multiple lockfiles exist (e.g. parent directory).
+  turbopack: {
+    root: projectRoot,
+    // Project-relative (see Turbopack docs); helps when the tool infers a parent folder as root.
+    resolveAlias: {
+      "lucide-react": "./node_modules/lucide-react",
+    },
+  },
   images: {
     remotePatterns: [
       {
