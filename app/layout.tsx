@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { PremiumFeatures } from "@/components/premium-features";
-import { ExperienceAssistant } from "@/components/experience-assistant";
+import { SiteChrome } from "@/components/site-chrome";
 
 const fontHeading = Syne({
   variable: "--font-heading",
@@ -38,9 +36,7 @@ export default function RootLayout({
       <body
         className={`${fontHeading.variable} ${fontBody.variable} font-sans antialiased`}
       >
-        <PremiumFeatures />
-        <ExperienceAssistant />
-        <SiteHeader />
+        <SiteChrome />
         {children}
       </body>
     </html>
