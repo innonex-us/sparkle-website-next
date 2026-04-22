@@ -12,12 +12,12 @@ export function WhyUsSection() {
     <section
       id="about"
       aria-labelledby="why-us-heading"
-      className="relative border-b bg-muted/30 px-4 py-20 md:px-6 md:py-24 bg-mesh"
+      className="relative border-b bg-muted/30 px-4 py-16 md:px-6 md:py-24 bg-mesh"
     >
       <SectionReveal className="container mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
-            className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted shadow-lg lg:aspect-auto lg:min-h-[400px]"
+            className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-muted shadow-lg lg:aspect-auto lg:min-h-[400px]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -46,7 +46,7 @@ export function WhyUsSection() {
             </p>
             <h2
               id="why-us-heading"
-              className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+              className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
             >
               Why Us?
             </h2>

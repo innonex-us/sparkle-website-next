@@ -18,7 +18,7 @@ export function WhatWeDoSection() {
   return (
     <section
       id="services"
-      className="relative border-b bg-muted/20 px-4 py-20 md:px-6 md:py-24 bg-grid-subtle"
+      className="relative border-b bg-muted/20 px-4 py-16 md:px-6 md:py-24 bg-grid-subtle"
       aria-labelledby="what-we-do-heading"
     >
       <StaggerReveal className="container mx-auto max-w-6xl">
@@ -28,7 +28,7 @@ export function WhatWeDoSection() {
           </p>
           <h2
             id="what-we-do-heading"
-            className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+            className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
           >
             What we can do for you
           </h2>
@@ -36,7 +36,7 @@ export function WhatWeDoSection() {
             End-to-end event and communication solutions tailored to your needs.
           </p>
         </div>
-        <div className="mt-14 grid justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid justify-items-center gap-6 sm:mt-14 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {whatWeDo.map((item) => (
             <StaggerItem key={item.title} className="w-full">
               <Link href={item.href} className="group block">
@@ -45,7 +45,7 @@ export function WhatWeDoSection() {
                   transition={defaultTransition}
                 >
                   <Card className="h-full overflow-hidden border-primary/10 shadow-sm transition-shadow duration-300 hover:border-primary/30 hover:shadow-lg">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+                    <div className="relative aspect-4/3 w-full overflow-hidden bg-muted">
                       <Image
                         src={item.image}
                         alt=""

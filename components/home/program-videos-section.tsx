@@ -66,7 +66,7 @@ export function ProgramVideosSection({ items }: { items: VideoItem[] }) {
   return (
     <section
       id="videos"
-      className="relative border-b bg-muted/20 px-4 py-16 md:px-6 md:py-20 bg-grid-subtle"
+      className="relative border-b bg-muted/20 px-4 py-14 md:px-6 md:py-20 bg-grid-subtle"
       aria-labelledby="videos-heading"
     >
       <SectionReveal className="container mx-auto max-w-6xl">
@@ -76,7 +76,7 @@ export function ProgramVideosSection({ items }: { items: VideoItem[] }) {
           </p>
           <h2
             id="videos-heading"
-            className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+            className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
           >
             Our Program Videos
           </h2>
@@ -85,7 +85,7 @@ export function ProgramVideosSection({ items }: { items: VideoItem[] }) {
             delivered.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
             <VideoCard key={item._id || `${item.image}-${index}`} item={item} index={index} />
           ))}

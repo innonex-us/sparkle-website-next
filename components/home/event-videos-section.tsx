@@ -13,7 +13,7 @@ export function EventVideosSection({ items }: { items: EventVideoItem[] }) {
   return (
     <section
       id="event-videos"
-      className="relative border-b bg-background px-4 py-16 md:px-6 md:py-20 bg-grid-subtle"
+      className="relative border-b bg-background px-4 py-14 md:px-6 md:py-20 bg-grid-subtle"
       aria-labelledby="event-videos-heading"
     >
       <SectionReveal className="container mx-auto max-w-6xl">
@@ -23,7 +23,7 @@ export function EventVideosSection({ items }: { items: EventVideoItem[] }) {
           </p>
           <h2
             id="event-videos-heading"
-            className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+            className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
           >
             Highlights from our events
           </h2>
@@ -31,7 +31,7 @@ export function EventVideosSection({ items }: { items: EventVideoItem[] }) {
             Watch moments from conferences, corporate programs, and events we have delivered.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <a
               key={item._id}
@@ -52,9 +52,9 @@ export function EventVideosSection({ items }: { items: EventVideoItem[] }) {
                 className="absolute inset-0 bg-foreground/30 transition-colors group-hover:bg-foreground/40"
                 aria-hidden
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4">
-                <div className="flex size-16 items-center justify-center rounded-full bg-white/90 text-primary shadow-lg transition-transform group-hover:scale-110">
-                  <Play className="size-8 fill-primary pl-1" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 sm:p-4">
+                <div className="flex size-12 items-center justify-center rounded-full bg-white/90 text-primary shadow-lg transition-transform group-hover:scale-110 sm:size-16">
+                  <Play className="size-6 fill-primary pl-1 sm:size-8" />
                 </div>
                 <p className="text-center text-sm font-medium text-white drop-shadow-md">
                   {item.title}

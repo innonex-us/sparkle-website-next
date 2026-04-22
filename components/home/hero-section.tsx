@@ -19,7 +19,7 @@ const container = {
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-[85vh] overflow-hidden border-b"
+      className="relative min-h-[72vh] overflow-hidden border-b sm:min-h-[80vh] md:min-h-[85vh]"
       aria-label="Hero"
     >
       <motion.div
@@ -51,24 +51,24 @@ export function HeroSection() {
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent"
         aria-hidden
       />
       <motion.div
-        className="container relative mx-auto flex min-h-[85vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center md:px-6"
+        className="container relative mx-auto flex min-h-[72vh] max-w-6xl flex-col items-center justify-center px-4 py-14 text-center sm:min-h-[80vh] sm:py-18 md:min-h-[85vh] md:px-6 md:py-20"
         variants={container}
         initial="hidden"
         animate="visible"
       >
         <motion.h1
-          className="max-w-4xl text-4xl font-bold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-7xl"
+          className="max-w-4xl text-3xl font-bold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-7xl"
           variants={fadeInUp}
           transition={slowTransition}
         >
           We Think Out of the Boundaries
         </motion.h1>
         <motion.p
-          className="mt-6 max-w-2xl text-lg text-white/90 md:text-xl"
+          className="mt-5 max-w-2xl text-base text-white/90 sm:mt-6 sm:text-lg md:text-xl"
           variants={fadeInUp}
           transition={defaultTransition}
         >
@@ -76,12 +76,12 @@ export function HeroSection() {
           corporate, and community.
         </motion.p>
         <motion.div
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4"
           variants={fadeInUp}
           transition={defaultTransition}
         >
           <MagneticWrapper>
-            <Button asChild size="lg" className="shadow-lg">
+            <Button asChild size="lg" className="w-[min(320px,90vw)] shadow-lg sm:w-auto">
               <Link href="/#about">Learn More</Link>
             </Button>
           </MagneticWrapper>
@@ -90,7 +90,7 @@ export function HeroSection() {
               asChild
               variant="secondary"
               size="lg"
-              className="border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20"
+              className="w-[min(320px,90vw)] border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20 sm:w-auto"
             >
               <Link href="/#contact">Contact Us</Link>
             </Button>

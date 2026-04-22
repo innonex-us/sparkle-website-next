@@ -18,7 +18,7 @@ export function CommitmentsSection() {
   return (
     <section
       id="commitments"
-      className="relative border-b bg-muted/20 px-4 py-20 md:px-6 md:py-24 bg-mesh"
+      className="relative border-b bg-muted/20 px-4 py-16 md:px-6 md:py-24 bg-mesh"
       aria-labelledby="commitments-heading"
     >
       <StaggerReveal className="container mx-auto max-w-6xl">
@@ -28,7 +28,7 @@ export function CommitmentsSection() {
           </p>
           <h2
             id="commitments-heading"
-            className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+            className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
           >
             Our commitments
           </h2>
@@ -47,11 +47,11 @@ export function CommitmentsSection() {
               quality={75}
               sizes="(min-width: 1152px) 1152px, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/20 to-transparent" />
           </div>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {commitments.map((item) => (
             <StaggerItem key={item.title}>
               <motion.div

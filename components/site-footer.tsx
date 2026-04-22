@@ -9,7 +9,7 @@ import {
 import { contact, developerCredit } from "@/lib/home-content";
 
 const MAP_QUERY = encodeURIComponent(
-  "237 West Monipur, Mirpur-2, Dhaka 1216, Bangladesh"
+  "267 West Monipur, Mirpur-2, Dhaka 1216, Bangladesh"
 );
 const MAP_EMBED_URL = `https://www.google.com/maps?q=${MAP_QUERY}&output=embed`;
 
@@ -29,7 +29,7 @@ export function SiteFooter() {
     <footer className="border-t bg-muted/30">
       <div className="container mx-auto max-w-6xl px-4 md:px-6">
         {/* Main footer content - 3 columns */}
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 sm:py-12 lg:grid-cols-3">
           {/* Brand column */}
           <div>
             <Link href="/" className="inline-block">
@@ -52,7 +52,7 @@ export function SiteFooter() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground">
               Quick links
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 sm:block sm:space-y-2">
               {quickLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link
@@ -119,7 +119,7 @@ export function SiteFooter() {
         </div>
 
         {/* Google Map - full width */}
-        <div className="pb-10">
+        <div className="pb-8 sm:pb-10">
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
             Location
           </h3>
@@ -139,7 +139,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-border py-6 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border py-5 sm:py-6 md:flex-row">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
               © 2025 Sparkle Marketing Communication. All rights reserved.
@@ -148,7 +148,7 @@ export function SiteFooter() {
               Developed by {developerCredit}
             </p>
           </div>
-          <nav className="flex flex-wrap items-center justify-center gap-6 text-sm">
+          <nav className="flex flex-wrap items-center justify-center gap-4 text-sm sm:gap-6">
             <Link
               href="/#contact"
               className="text-muted-foreground transition-colors hover:text-primary"

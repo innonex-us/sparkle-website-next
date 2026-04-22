@@ -11,7 +11,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
   return (
     <section
       id="events"
-      className="relative border-b bg-background px-4 py-20 md:px-6 md:py-24 bg-grid-subtle"
+      className="relative border-b bg-background px-4 py-16 md:px-6 md:py-24 bg-grid-subtle"
       aria-labelledby="events-heading"
     >
       <StaggerReveal className="container mx-auto max-w-6xl">
@@ -21,12 +21,12 @@ export function EventsSection({ events }: { events: EventItem[] }) {
           </p>
           <h2
             id="events-heading"
-            className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+            className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
           >
             Events we deliver
           </h2>
         </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {events.map((event, index) => (
             <StaggerItem key={`${event.name}-${index}`}>
               <motion.div
@@ -34,7 +34,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
                 transition={defaultTransition}
               >
                 <Card className="group overflow-hidden border-primary/10 shadow-sm transition-shadow duration-300 hover:border-primary/30 hover:shadow-xl">
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted">
+                  <div className="relative aspect-3/4 w-full overflow-hidden bg-muted">
                     <Image
                       src={event.image}
                       alt={event.name}
@@ -43,7 +43,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
                       quality={72}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-foreground/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <CardTitle className="text-lg text-white drop-shadow-md">
                         {event.name}

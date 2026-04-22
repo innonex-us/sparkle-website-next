@@ -40,7 +40,7 @@ export function SiteHeader() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 200, damping: 30 }}
     >
-      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
+      <div className="container mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4 sm:h-16 md:px-6">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src="/logo.png"
@@ -48,7 +48,7 @@ export function SiteHeader() {
             width={160}
             height={48}
             priority
-            className="h-10 w-auto"
+            className="h-8 w-auto sm:h-10"
           />
         </Link>
 
@@ -104,7 +104,7 @@ export function SiteHeader() {
               <Menu className="size-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[280px]">
+          <SheetContent side="right" className="w-[90vw] max-w-[320px]">
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
             </SheetHeader>
@@ -145,7 +145,7 @@ export function SiteHeader() {
                   Program videos
                 </Link>
               </div>
-              <Button asChild className="mt-2" onClick={() => setOpen(false)}>
+              <Button asChild className="mt-2 w-full" onClick={() => setOpen(false)}>
                 <Link href="/#contact">Call Now</Link>
               </Button>
             </nav>

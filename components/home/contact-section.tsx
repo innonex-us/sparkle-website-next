@@ -11,7 +11,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-muted/30 px-4 py-20 md:px-6 md:py-24 bg-grid-subtle"
+      className="relative overflow-hidden bg-muted/30 px-4 py-16 md:px-6 md:py-24 bg-grid-subtle"
       aria-labelledby="contact-heading"
     >
       <SectionReveal className="container relative mx-auto max-w-6xl">
@@ -24,7 +24,7 @@ export function ContactSection() {
             variants={scaleIn}
             transition={defaultTransition}
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-lg lg:aspect-auto lg:min-h-[320px]">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-muted shadow-lg lg:aspect-auto lg:min-h-[320px]">
               <Image
                 src={contactImage}
                 alt="Team collaboration"
@@ -41,7 +41,7 @@ export function ContactSection() {
             </p>
             <h2
               id="contact-heading"
-              className="mt-2 text-3xl font-bold text-foreground md:text-4xl"
+              className="mt-2 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl"
             >
               We&apos;d love to hear from you
             </h2>
@@ -60,9 +60,9 @@ export function ContactSection() {
                 </a>
               </p>
             </div>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-6 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button asChild size="lg">
+                <Button asChild size="lg" className="w-[min(320px,90vw)] sm:w-auto">
                   <a
                     href={contact.whatsapp}
                     target="_blank"
@@ -72,7 +72,7 @@ export function ContactSection() {
                   </a>
                 </Button>
               </motion.div>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="w-[min(320px,90vw)] sm:w-auto">
                 <a href={`tel:${contact.phone1.replace(/\s/g, "")}`}>
                   Call Now
                 </a>

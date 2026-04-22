@@ -8,12 +8,12 @@ export function AnnouncementSection() {
   return (
     <section
       id="announcement"
-      className="relative border-b bg-primary/5 px-4 py-20 md:px-6 md:py-24 bg-glow-bottom"
+      className="relative border-b bg-primary/5 px-4 py-16 md:px-6 md:py-24 bg-glow-bottom"
       aria-labelledby="announcement-heading"
     >
       <SectionReveal className="container relative mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-lg lg:aspect-auto lg:min-h-[280px]">
+          <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-muted shadow-lg lg:aspect-auto lg:min-h-[280px]">
             <Image
               src={announcementImage}
               alt="Campaign and creative work"
@@ -29,7 +29,7 @@ export function AnnouncementSection() {
             </p>
             <h2
               id="announcement-heading"
-              className="mt-2 text-center text-3xl font-bold text-foreground md:text-4xl lg:text-left"
+              className="mt-2 text-center text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-left"
             >
               Our priority while crafting campaigns for you
             </h2>
