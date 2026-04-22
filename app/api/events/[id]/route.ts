@@ -51,10 +51,25 @@ export async function PUT(
 
   const body = await request.json();
   const now = new Date().toISOString();
+  const normalizedImages =
+    body.images !== undefined
+      ? Array.isArray(body.images)
+        ? body.images.filter((value: unknown): value is string => typeof value === "string" && value.trim().length > 0)
+        : []
+      : undefined;
+  const normalizedImage =
+    normalizedImages !== undefined
+      ? normalizedImages[0] ?? ""
+      : body.image !== undefined
+        ? typeof body.image === "string"
+          ? body.image
+          : ""
+        : undefined;
   const update: Partial<Event> = {
     updatedAt: now,
     ...(body.name !== undefined && { name: body.name }),
-    ...(body.image !== undefined && { image: body.image }),
+    ...(normalizedImages !== undefined && { images: normalizedImages }),
+    ...(normalizedImage !== undefined && { image: normalizedImage }),
     ...(body.description !== undefined && { description: body.description }),
     ...(body.order !== undefined && { order: Number(body.order) }),
   };

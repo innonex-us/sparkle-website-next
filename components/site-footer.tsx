@@ -5,8 +5,6 @@ import {
   Phone,
   Mail,
   MessageCircle,
-  Facebook,
-  Instagram,
 } from "lucide-react";
 import { contact, developerCredit } from "@/lib/home-content";
 
@@ -152,31 +150,33 @@ export function SiteFooter() {
           </div>
           <nav className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <Link
-              href="/#"
+              href="/#contact"
               className="text-muted-foreground transition-colors hover:text-primary"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <Link
-              href="/#"
+              href="/#about"
               className="text-muted-foreground transition-colors hover:text-primary"
             >
-              Terms & Conditions
+              Terms
             </Link>
             <div className="flex items-center gap-3">
               <a
-                href="/#"
+                href={contact.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-primary"
-                aria-label="Facebook"
+                aria-label="WhatsApp"
               >
-                <Facebook className="size-4" />
+                <MessageCircle className="size-4" />
               </a>
               <a
-                href="/#"
+                href={`mailto:${contact.email}`}
                 className="text-muted-foreground transition-colors hover:text-primary"
-                aria-label="Instagram"
+                aria-label="Email"
               >
-                <Instagram className="size-4" />
+                <Mail className="size-4" />
               </a>
             </div>
           </nav>

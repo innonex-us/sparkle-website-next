@@ -18,7 +18,10 @@ export async function getEvents(): Promise<EventItem[]> {
       .sort({ order: 1, createdAt: -1 })
       .toArray();
     if (list.length === 0) return [...staticEvents];
-    return list.map((e) => ({ name: e.name, image: e.image }));
+    return list.map((e) => ({
+      name: e.name,
+      image: Array.isArray(e.images) && e.images.length > 0 ? e.images[0] : e.image,
+    }));
   } catch {
     return [...staticEvents];
   }

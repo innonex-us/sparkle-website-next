@@ -6,13 +6,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ImageUpload } from "./image-upload";
+import { MultiImageUpload } from "./multi-image-upload";
 
 type EventFormProps = {
   initial?: {
     _id: string;
     name: string;
-    image: string;
+    images: string[];
     description: string;
     order: number;
   };
@@ -23,7 +23,7 @@ export function EventForm({ initial }: EventFormProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [name, setName] = useState(initial?.name ?? "");
-  const [image, setImage] = useState(initial?.image ?? "");
+  const [images, setImages] = useState(initial?.images ?? []);
   const [description, setDescription] = useState(initial?.description ?? "");
   const [order, setOrder] = useState(initial?.order ?? 0);
 
@@ -37,7 +37,7 @@ export function EventForm({ initial }: EventFormProps) {
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, image, description, order }),
+        body: JSON.stringify({ name, images, description, order }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Failed to save");
@@ -62,8 +62,8 @@ export function EventForm({ initial }: EventFormProps) {
         />
       </div>
       <div className="space-y-2">
-        <Label>Image</Label>
-        <ImageUpload value={image} onChange={setImage} folder="events" />
+        <Label>Images</Label>
+        <MultiImageUpload values={images} onChange={setImages} folder="events" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="description">Description (optional)</Label>

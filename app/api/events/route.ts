@@ -34,9 +34,15 @@ export async function POST(request: Request) {
 
   const body = await request.json();
   const now = new Date().toISOString();
+  const images = Array.isArray(body.images)
+    ? body.images.filter((value: unknown): value is string => typeof value === "string" && value.trim().length > 0)
+    : typeof body.image === "string" && body.image.trim().length > 0
+      ? [body.image]
+      : [];
   const doc: Omit<Event, "_id"> = {
     name: body.name ?? "",
-    image: body.image ?? "",
+    images,
+    image: images[0] ?? "",
     description: body.description ?? "",
     order: Number(body.order) ?? 0,
     createdAt: now,

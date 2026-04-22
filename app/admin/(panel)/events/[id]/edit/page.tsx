@@ -23,7 +23,11 @@ export default async function EditEventPage({
   const initial = {
     _id: doc._id!.toString(),
     name: doc.name,
-    image: doc.image,
+    images: Array.isArray(doc.images)
+      ? doc.images
+      : doc.image
+        ? [doc.image]
+        : [],
     description: doc.description ?? "",
     order: doc.order,
   };

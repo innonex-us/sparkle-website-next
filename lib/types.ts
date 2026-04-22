@@ -15,6 +15,7 @@ export interface BlogPost {
 export interface Event {
   _id?: ObjectId;
   name: string;
+  images?: string[];
   image: string;
   description?: string;
   order: number;

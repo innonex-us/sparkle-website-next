@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { SectionReveal } from "@/components/ui/section-reveal";
 import { clientsSectionImage } from "@/lib/home-content";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -56,7 +56,7 @@ export function HonorableClientsSection() {
           </p>
         </div>
         <div className="relative mt-10 overflow-hidden rounded-2xl bg-muted shadow-lg">
-          <div className="relative aspect-[21/9] w-full min-h-[200px]">
+          <div className="relative aspect-21/9 w-full min-h-[200px]">
             <Image
               src={clientsSectionImage}
               alt="Our clients and events"
@@ -84,7 +84,7 @@ export function HonorableClientsSection() {
 
           <div 
             ref={scrollRef}
-            className="flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] scroll-smooth"
+            className="flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_48px,_black_calc(100%-48px),transparent_100%)] md:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] scroll-smooth"
           >
             <div 
               className={`flex w-max min-w-full items-center gap-6 pr-6 transition-all duration-300 ${isHovered ? 'animate-none' : 'animate-marquee'}`}
@@ -92,14 +92,14 @@ export function HonorableClientsSection() {
               {[...clientLogos, ...clientLogos, ...clientLogos].map((logoPath, index) => (
                 <div
                   key={index}
-                  className="relative flex h-20 w-32 shrink-0 items-center justify-center rounded-xl border-2 border-primary/10 bg-muted/50 p-4 shadow-sm backdrop-blur sm:h-24 sm:w-40 transition-all hover:scale-105 hover:bg-primary/5 hover:border-primary/30"
+                  className="relative flex h-16 w-28 shrink-0 items-center justify-center rounded-xl border-2 border-primary/10 bg-background p-3 shadow-sm backdrop-blur sm:h-20 sm:w-32 md:h-24 md:w-40 transition-all hover:scale-105 hover:bg-primary/5 hover:border-primary/30"
                 >
                   <Image
                     src={logoPath}
                     alt={`Client logo ${index + 1}`}
                     fill
-                    className="object-contain p-3 grayscale transition-all duration-300 hover:grayscale-0"
-                    sizes="(max-width: 640px) 128px, 160px"
+                    className="object-contain p-2"
+                    sizes="(max-width: 640px) 112px, (max-width: 1024px) 128px, 160px"
                   />
                 </div>
               ))}
