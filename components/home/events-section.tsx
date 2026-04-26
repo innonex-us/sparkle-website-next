@@ -128,7 +128,7 @@ function EventGalleryLightbox({
             </button>
           )}
           <div
-            className="relative aspect-3/4 w-full max-w-[min(100%,520px)] sm:max-w-2xl md:max-w-3xl"
+            className="relative aspect-3/4 w-full max-w-[min(100%,560px)] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
             {slides.map((src, i) => (
@@ -142,7 +142,7 @@ function EventGalleryLightbox({
                   "absolute inset-0 rounded-lg object-contain transition-opacity duration-300",
                   i === idx ? "z-1 opacity-100" : "z-0 opacity-0 pointer-events-none"
                 )}
-                sizes="(max-width: 768px) 100vw, 896px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1536px) 90vw, 1200px"
                 quality={85}
                 priority
                 unoptimized={isCloudinary(src)}
@@ -264,7 +264,7 @@ function EventCard({
                   : "z-0 opacity-0 pointer-events-none"
               )}
               quality={72}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 34vw, 420px"
               unoptimized={isCloudinary(src)}
             />
           ))}
@@ -328,7 +328,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
         open={lightbox !== null}
         onClose={() => setLightbox(null)}
       />
-      <StaggerReveal className="container mx-auto max-w-6xl">
+      <StaggerReveal className="container mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-medium uppercase tracking-wider text-primary">
             Event types
@@ -340,7 +340,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
             Events we deliver
           </h2>
         </div>
-        <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7 xl:grid-cols-3 xl:gap-8 2xl:grid-cols-4">
           {events.map((event, index) => (
             <StaggerItem key={event._id ?? `${event.name}-${index}`}>
               <motion.div
