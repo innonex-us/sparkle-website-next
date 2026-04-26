@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getDb } from "@/lib/db";
 import { collections } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin-auth";
@@ -54,6 +55,7 @@ export async function POST(request: Request) {
     const { insertedId } = await db
       .collection<Event>(collections.events)
       .insertOne(doc as Event);
+    revalidatePath("/");
     return NextResponse.json({
       ...doc,
       _id: insertedId.toString(),

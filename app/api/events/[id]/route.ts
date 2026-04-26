@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/db";
 import { collections } from "@/lib/db";
@@ -76,19 +77,22 @@ export async function PUT(
 
   try {
     const db = await getDb();
-    const result = await db
-      .collection<Event>(collections.events)
-      .findOneAndUpdate(
-        { _id: new ObjectId(id) },
-        { $set: update },
-        { returnDocument: "after" }
-      );
+    const raw = await db.collection<Event>(collections.events).findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: update },
+      { returnDocument: "after" }
+    );
+    const result =
+      raw && typeof raw === "object" && "value" in raw
+        ? (raw as { value: Event | null }).value
+        : (raw as Event | null);
     if (!result) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
+    revalidatePath("/");
     return NextResponse.json({
       ...result,
-      _id: result._id.toString(),
+      _id: result._id!.toString(),
     });
   } catch (err) {
     console.error(err);
@@ -121,6 +125,7 @@ export async function DELETE(
     if (result.deletedCount === 0) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
+    revalidatePath("/");
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(err);
