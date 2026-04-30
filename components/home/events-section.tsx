@@ -1,12 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useCallback, useEffect, useId, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Card, CardTitle } from "@/components/ui/card";
-import { StaggerReveal, StaggerItem } from "@/components/ui/section-reveal";
-import { defaultTransition } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import type { EventItem } from "@/lib/data";
 
@@ -328,7 +325,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
         open={lightbox !== null}
         onClose={() => setLightbox(null)}
       />
-      <StaggerReveal className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-medium uppercase tracking-wider text-primary">
             Event types
@@ -342,20 +339,15 @@ export function EventsSection({ events }: { events: EventItem[] }) {
         </div>
         <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7 xl:grid-cols-3 xl:gap-8 2xl:grid-cols-4">
           {events.map((event, index) => (
-            <StaggerItem key={event._id ?? `${event.name}-${index}`}>
-              <motion.div
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={defaultTransition}
-              >
-                <EventCard
-                  event={event}
-                  onOpenGallery={(e, start) => setLightbox({ event: e, index: start })}
-                />
-              </motion.div>
-            </StaggerItem>
+            <div key={event._id ?? `${event.name}-${index}`}>
+              <EventCard
+                event={event}
+                onOpenGallery={(e, start) => setLightbox({ event: e, index: start })}
+              />
+            </div>
           ))}
         </div>
-      </StaggerReveal>
+      </div>
     </section>
   );
 }
