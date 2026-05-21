@@ -36,7 +36,7 @@ export function OurProfileForm({ currentPdfUrl }: OurProfileFormProps) {
 
   return (
     <div className="space-y-6">
-      <PdfUpload value={pdfUrl} onChange={setPdfUrl} folder="profile" />
+      <PdfUpload value={pdfUrl} onChange={setPdfUrl} />
       {error && <p className="text-sm text-destructive">{error}</p>}
       {saved && (
         <p className="text-sm text-green-600 dark:text-green-400">

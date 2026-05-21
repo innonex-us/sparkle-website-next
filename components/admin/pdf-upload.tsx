@@ -7,10 +7,9 @@ import { Upload, X, FileText } from "lucide-react";
 type PdfUploadProps = {
   value: string;
   onChange: (url: string) => void;
-  folder?: string;
 };
 
-export function PdfUpload({ value, onChange, folder = "profile" }: PdfUploadProps) {
+export function PdfUpload({ value, onChange }: PdfUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,8 +26,7 @@ export function PdfUpload({ value, onChange, folder = "profile" }: PdfUploadProp
     try {
       const formData = new FormData();
       formData.set("file", file);
-      formData.set("folder", folder);
-      const res = await fetch("/api/upload", {
+      const res = await fetch("/api/upload-pdf", {
         method: "POST",
         body: formData,
       });
