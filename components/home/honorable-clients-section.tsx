@@ -19,6 +19,12 @@ const clientLogos = [
   "/contributor/11-1.png",
 ];
 
+function toCloudinaryPdfDownload(url: string): string {
+  if (!url.includes("res.cloudinary.com")) return url;
+  const withExt = url.endsWith(".pdf") ? url : `${url}.pdf`;
+  return withExt.replace("/upload/", "/upload/fl_attachment/");
+}
+
 type HonorableClientsSectionProps = {
   profilePdfUrl?: string;
 };
@@ -70,7 +76,7 @@ export function HonorableClientsSection({ profilePdfUrl }: HonorableClientsSecti
           {profilePdfUrl && (
             <div className="mt-6">
               <Button asChild size="lg">
-                <a href={profilePdfUrl} target="_blank" rel="noopener noreferrer" download>
+                <a href={toCloudinaryPdfDownload(profilePdfUrl)} target="_blank" rel="noopener noreferrer">
                   <Download className="size-4" />
                   Download Our Profile
                 </a>
