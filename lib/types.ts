@@ -35,6 +35,13 @@ export interface GalleryItem {
   updatedAt: string;
 }
 
+/** Company profile PDF settings */
+export interface SiteProfile {
+  _id?: ObjectId;
+  pdfUrl: string;
+  updatedAt: string;
+}
+
 /** Event videos shown on the home page */
 export interface EventVideo {
   _id?: ObjectId;

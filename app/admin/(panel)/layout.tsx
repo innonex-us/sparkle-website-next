@@ -9,6 +9,7 @@ import {
   Calendar,
   Video,
   Settings,
+  FileUser,
 } from "lucide-react";
 import { LogoutButton } from "@/components/admin/logout-button";
 
@@ -80,6 +81,16 @@ export default async function AdminPanelLayout({
               >
                 <Image className="size-4" />
                 Gallery
+              </Button>
+            </Link>
+            <Link href="/admin/our-profile">
+              <Button
+                variant="ghost"
+                className="w-full justify-start gap-2"
+                size="sm"
+              >
+                <FileUser className="size-4" />
+                Our Profile
               </Button>
             </Link>
           </div>

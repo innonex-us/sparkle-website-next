@@ -22,8 +22,12 @@ export async function POST(request: Request) {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
+  const isPdf = file.type === "application/pdf" || file.name?.endsWith(".pdf");
+
   try {
-    const result = await uploadToCloudinary(buffer, folder);
+    const result = await uploadToCloudinary(buffer, folder, {
+      resource_type: isPdf ? "raw" : "image",
+    });
     return NextResponse.json({
       url: result.secure_url,
       publicId: result.public_id,

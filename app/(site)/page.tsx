@@ -13,15 +13,20 @@ import {
 } from "@/components/home";
 import { SiteFooter } from "@/components/site-footer";
 import { getEvents, getGalleryForVideos, getEventVideos } from "@/lib/data";
+import { getDb, collections } from "@/lib/db";
+import type { SiteProfile } from "@/lib/types";
 
 export const revalidate = 60;
 
 export default async function Home() {
-  const [events, galleryItems, eventVideos] = await Promise.all([
+  const db = await getDb();
+  const [events, galleryItems, eventVideos, siteProfileDoc] = await Promise.all([
     getEvents(),
     getGalleryForVideos(),
     getEventVideos(),
+    db.collection<SiteProfile>(collections.siteProfile).findOne({ _id: "main" as never }),
   ]);
+  const profilePdfUrl = siteProfileDoc?.pdfUrl ?? "";
 
   return (
     <>
@@ -34,7 +39,7 @@ export default async function Home() {
         <EventVideosSection items={eventVideos} />
         <CommitmentsSection />
         <AnnouncementSection />
-        <HonorableClientsSection />
+        <HonorableClientsSection profilePdfUrl={profilePdfUrl} />
         <ProgramVideosSection items={galleryItems} />
         <ContactSection />
       </main>

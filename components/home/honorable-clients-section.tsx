@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { SectionReveal } from "@/components/ui/section-reveal";
 import { clientsSectionImage } from "@/lib/home-content";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const clientLogos = [
   "/contributor/3-1.png",
@@ -18,7 +19,11 @@ const clientLogos = [
   "/contributor/11-1.png",
 ];
 
-export function HonorableClientsSection() {
+type HonorableClientsSectionProps = {
+  profilePdfUrl?: string;
+};
+
+export function HonorableClientsSection({ profilePdfUrl }: HonorableClientsSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [failedLogos, setFailedLogos] = useState<Record<string, boolean>>({});
@@ -62,6 +67,16 @@ export function HonorableClientsSection() {
             We are proud to have served government bodies, local companies, and
             organizations across Bangladesh.
           </p>
+          {profilePdfUrl && (
+            <div className="mt-6">
+              <Button asChild size="lg">
+                <a href={profilePdfUrl} target="_blank" rel="noopener noreferrer" download>
+                  <Download className="size-4" />
+                  Download Our Profile
+                </a>
+              </Button>
+            </div>
+          )}
         </div>
         <div className="relative mt-10 overflow-hidden rounded-2xl bg-muted shadow-lg">
           <div className="relative aspect-21/9 w-full min-h-[200px]">

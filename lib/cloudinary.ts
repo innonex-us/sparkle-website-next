@@ -16,7 +16,7 @@ export type UploadResult = {
 export async function uploadToCloudinary(
   file: Buffer,
   folder: string,
-  options?: { resource_type?: "image" | "video" }
+  options?: { resource_type?: "image" | "video" | "raw" }
 ): Promise<UploadResult> {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
