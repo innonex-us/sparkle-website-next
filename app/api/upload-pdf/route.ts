@@ -33,8 +33,10 @@ export async function POST(request: Request) {
     const buffer = Buffer.from(bytes);
 
     // Upload PDF to Cloudinary as raw resource in "profile" folder
+    const safeName = `company-profile-${Date.now()}.pdf`;
     const result = await uploadToCloudinary(buffer, "profile", {
       resource_type: "raw",
+      public_id: safeName,
     });
 
     return NextResponse.json({ url: result.secure_url });

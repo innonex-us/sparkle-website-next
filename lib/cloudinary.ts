@@ -16,13 +16,17 @@ export type UploadResult = {
 export async function uploadToCloudinary(
   file: Buffer,
   folder: string,
-  options?: { resource_type?: "image" | "video" | "raw" }
+  options?: {
+    resource_type?: "image" | "video" | "raw";
+    public_id?: string;
+  }
 ): Promise<UploadResult> {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       {
         folder: `sparkle/${folder}`,
         resource_type: options?.resource_type ?? "image",
+        public_id: options?.public_id,
       },
       (error, result) => {
         if (error) return reject(error);
