@@ -24,6 +24,13 @@ export function MultiImageUpload({
     const files = Array.from(e.target.files ?? []);
     if (files.length === 0) return;
 
+    const MAX_SIZE = 100 * 1024 * 1024; // 100MB
+    const oversizedFile = files.find(file => file.size > MAX_SIZE);
+    if (oversizedFile) {
+      setError(`File "${oversizedFile.name}" exceeds the 100MB limit.`);
+      return;
+    }
+
     setError("");
     setUploading(true);
 

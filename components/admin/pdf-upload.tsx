@@ -21,6 +21,11 @@ export function PdfUpload({ value, onChange }: PdfUploadProps) {
       setError("Only PDF files are allowed.");
       return;
     }
+    const MAX_SIZE = 100 * 1024 * 1024; // 100MB
+    if (file.size > MAX_SIZE) {
+      setError("File size must be less than 100MB.");
+      return;
+    }
     setError("");
     setUploading(true);
     try {

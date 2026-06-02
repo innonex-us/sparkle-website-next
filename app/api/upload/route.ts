@@ -19,6 +19,15 @@ export async function POST(request: Request) {
     );
   }
 
+  // Max file upload limit: 100MB
+  const MAX_SIZE = 100 * 1024 * 1024;
+  if (file.size > MAX_SIZE) {
+    return NextResponse.json(
+      { error: "File size exceeds the 100MB limit" },
+      { status: 400 }
+    );
+  }
+
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 

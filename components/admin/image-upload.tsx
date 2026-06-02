@@ -19,6 +19,11 @@ export function ImageUpload({ value, onChange, folder = "uploads" }: ImageUpload
   async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+    const MAX_SIZE = 100 * 1024 * 1024; // 100MB
+    if (file.size > MAX_SIZE) {
+      setError("File size must be less than 100MB.");
+      return;
+    }
     setError("");
     setUploading(true);
     try {
